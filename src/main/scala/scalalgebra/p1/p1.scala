@@ -4,7 +4,11 @@ def start = println("Hello, world!")
 
 trait Semigroup[T]:
   type Carrier = T
-  extension (a: Carrier) def <+>(b: Carrier): Carrier 
+  extension (a: Carrier) def <+>(b: Carrier): Carrier
 
-given intSemigroup: Semigroup[Int] with
-  extension (a: Carrier) def <+>(b: Carrier): Carrier = a + b
+object Semigroup:
+  given foeInt: Semigroup[Int] with
+    extension (a: Carrier) def <+>(b: Carrier): Carrier = a + b
+
+  given forFloat: Semigroup[Float] with
+    extension (a: Float) override def <+>(b: Float): Carrier = a + b

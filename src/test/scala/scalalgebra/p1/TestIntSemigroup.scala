@@ -2,7 +2,6 @@ package scalalgebra.p1
 
 import org.typelevel.discipline.Laws
 import org.scalacheck.Arbitrary
-import org.scalacheck.Test.Parameters
 
 class SemigroupLaws[T: Semigroup: Arbitrary] extends Laws:
   import org.scalacheck.Prop.*
@@ -16,3 +15,4 @@ end SemigroupLaws
 
 class Test extends munit.DisciplineSuite:
   checkAll("Int semigroup", SemigroupLaws[Int].all)
+  checkAll("Float semigroup", SemigroupLaws[Float].all)
