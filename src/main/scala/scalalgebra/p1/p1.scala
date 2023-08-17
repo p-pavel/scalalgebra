@@ -1,13 +1,15 @@
 package scalalgebra.p1
 @main
-def start = println("Hello, world!")
+def start = 
+  import Semigroup.given
+  println(s"Hello, algebra!: ${42 <+> 10}")
 
 trait Semigroup[T]:
   type Carrier = T
   extension (a: Carrier) def <+>(b: Carrier): Carrier
 
 object Semigroup:
-  given foeInt: Semigroup[Int] with
+  given forInt: Semigroup[Int] with
     extension (a: Carrier) def <+>(b: Carrier): Carrier = a + b
 
   given forFloat: Semigroup[Float] with
