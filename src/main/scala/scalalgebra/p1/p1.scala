@@ -8,9 +8,13 @@ trait Semigroup[T]:
   type Carrier = T
   extension (a: Carrier) def <+>(b: Carrier): Carrier
 
+trait Monoid[T] extends Semigroup[T]:
+  def empty: T
+
 object Semigroup:
-  given forInt: Semigroup[Int] with
+  given forInt: Monoid[Int] with
     extension (a: Carrier) def <+>(b: Carrier): Carrier = a + b
+    def empty = 0
 
   given forFloat: Semigroup[Float] with
     extension (a: Float) override def <+>(b: Float): Carrier = a + b
