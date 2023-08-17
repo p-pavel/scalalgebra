@@ -12,3 +12,6 @@ object Semigroup:
 
   given forFloat: Semigroup[Float] with
     extension (a: Float) override def <+>(b: Float): Carrier = a + b
+  given forString: Semigroup[String] with
+    extension (a: Carrier) override def <+>(b: Carrier): Carrier = a + b
+
